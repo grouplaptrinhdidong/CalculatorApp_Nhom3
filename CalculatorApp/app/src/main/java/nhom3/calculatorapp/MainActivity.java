@@ -2,12 +2,196 @@ package nhom3.calculatorapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
-
+    double value1 = 0;
+    double value2 = 0;
+    Character sign = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final TextView tvrs = (TextView) findViewById(R.id.tvResult);
+        Button btnNum0 = (Button) findViewById(R.id.btnNum0);
+        btnNum0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "0");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum1 = (Button) findViewById(R.id.btnNum1);
+        btnNum1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "1");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum2 = (Button) findViewById(R.id.btnNum2);
+        btnNum2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "2");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum3 = (Button) findViewById(R.id.btnNum3);
+        btnNum3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "3");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum4 = (Button) findViewById(R.id.btnNum4);
+        btnNum4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "4");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum5 = (Button) findViewById(R.id.btnNum5);
+        btnNum5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "5");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum6 = (Button) findViewById(R.id.btnNum6);
+        btnNum6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "6");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum7 = (Button) findViewById(R.id.btnNum7);
+        btnNum7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "7");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum8 = (Button) findViewById(R.id.btnNum8);
+        btnNum8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "8");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnNum9 = (Button) findViewById(R.id.btnNum9);
+        btnNum9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText() + "9");
+                if(sign == null){
+                    value1 = Double.parseDouble(tvrs.getText() + "");
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText() + "");
+                }
+            }
+        });
+        Button btnSub = (Button) findViewById(R.id.btnSub);
+        btnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText("");
+                sign = '-';
+            }
+        });
+        Button btnDiv = (Button) findViewById(R.id.btnDiv);
+        btnSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText("");
+                sign = '/';
+            }
+        });
+        Button btnEq = (Button) findViewById(R.id.btnEqual);
+        btnEq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double rs;
+                if(sign != null){
+                    rs = 0;
+                    switch (sign){
+                        case '-': rs = value1 - value2;break;
+                        case '/': rs = value1/value2;break;
+                    }
+                    tvrs.setText(rs +"");
+                    value1 = rs;
+                    sign = null;
+                }
+               /* else {
+                    rs = value1;
+                    tvrs.setText(tvrs.getText().toString() + rs);
+                    value1 = rs;
+                    sign = null;
+                }*/
+            }
+        });
+        Button btnAC = (Button) findViewById(R.id.btnAC);
+        btnAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                value1 = 0;
+                value2 = 0;
+                sign = null;
+                tvrs.setText("");
+            }
+        });
     }
 }
