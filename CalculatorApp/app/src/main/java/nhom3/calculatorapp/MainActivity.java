@@ -6,24 +6,32 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
-    double value1 = 0;
-    double value2 = 0;
-    Character sign = null;
+    //double value1 = 0;
+    //double value2 = 0;
+    public Double value1 = 0.0;
+    public Double value2 = 0.0;
+    public Character sign = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final TextView tvrs = (TextView) findViewById(R.id.tvResult);
+
+
+        //tạo sự kiện click cho các button số từ 0 đến 9
         Button btnNum0 = (Button) findViewById(R.id.btnNum0);
         btnNum0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "0");
+                tvrs.setText(tvrs.getText().toString()+"0");
                 if(sign == null){
-                    value1 = Double.parseDouble(tvrs.getText() + "");
+                    value1 = Double.parseDouble(tvrs.getText().toString());
                 }
                 else {
-                    value2 = Double.parseDouble(tvrs.getText() + "");
+                    //value2 = Double.parseDouble(tvrs.getText() + "");
+                    value2 = Double.parseDouble(tvrs.getText().toString());
                 }
             }
         });
@@ -31,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         btnNum1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "1");
+                tvrs.setText(tvrs.getText().toString()+"1");
                 if(sign == null){
-                    value1 = Double.parseDouble(tvrs.getText() + "");
+                    //value1 = Double.parseDouble(tvrs.getText() + "");
+                    value1 = Double.parseDouble(tvrs.getText().toString());
                 }
                 else {
-                    value2 = Double.parseDouble(tvrs.getText() + "");
+                    //value2 = Double.parseDouble(tvrs.getText() + "");
+                    value2 = Double.parseDouble(tvrs.getText().toString());
                 }
             }
         });
@@ -44,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "2");
+                tvrs.setText(tvrs.getText().toString()+"2");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -57,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "3");
+                tvrs.setText(tvrs.getText().toString()+"3");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -70,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "4");
+                tvrs.setText(tvrs.getText().toString()+"4");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "5");
+                tvrs.setText(tvrs.getText().toString()+"5");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -96,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "6");
+                tvrs.setText(tvrs.getText().toString()+"6");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -109,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "7");
+                tvrs.setText(tvrs.getText().toString()+"7");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -122,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "8");
+                tvrs.setText(tvrs.getText().toString()+"8");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -135,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         btnNum9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvrs.setText(tvrs.getText() + "9");
+                tvrs.setText(tvrs.getText().toString()+"9");
                 if(sign == null){
                     value1 = Double.parseDouble(tvrs.getText() + "");
                 }
@@ -144,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         Button btnSub = (Button) findViewById(R.id.btnSub);
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,45 +165,80 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Button btnDiv = (Button) findViewById(R.id.btnDiv);
-        btnSub.setOnClickListener(new View.OnClickListener() {
+        btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvrs.setText("");
                 sign = '/';
             }
         });
+
+        Button btnAdd =(Button) findViewById(R.id.btnAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sign = '+';
+                tvrs.setText("");
+            }
+        });
+
+        Button btnMul=(Button) findViewById(R.id.btnMul);
+        btnMul.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sign ='*';
+                tvrs.setText("");
+            }
+        });
+
         Button btnEq = (Button) findViewById(R.id.btnEqual);
         btnEq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double rs;
+                //double rs;
+
                 if(sign != null){
-                    rs = 0;
-                    switch (sign){
-                        case '-': rs = value1 - value2;break;
-                        case '/': rs = value1/value2;break;
+                    Double rs = 0.0;
+                    //switch (sign)
+//                    {
+//                        case '+': rs = value1 + value2;break;
+//                        case '*': rs = value1 + value2;break;
+//                        case '-': rs = value1 - value2;break;
+//                        case '/': rs = value1/value2;break;
+//
+//                    }
+                    if(sign=='+'){
+                        rs= value1+value2;
                     }
+                    else if(sign=='-'){
+                        rs=value1-value2;
+                    }
+                    else if (sign=='*'){
+                        rs=value1*value2;
+                    }
+                    else if (sign=='/'){
+                        rs=value1/value2;
+                    }
+
                     tvrs.setText(rs +"");
+                    tvrs.setText(rs.toString());
                     value1 = rs;
                     sign = null;
                 }
-               /* else {
-                    rs = value1;
-                    tvrs.setText(tvrs.getText().toString() + rs);
-                    value1 = rs;
-                    sign = null;
-                }*/
+
             }
         });
         Button btnAC = (Button) findViewById(R.id.btnAC);
         btnAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                value1 = 0;
-                value2 = 0;
+                value1 = 0.0;
+                value2 = 0.0;
                 sign = null;
                 tvrs.setText("");
             }
         });
+
+
     }
 }
