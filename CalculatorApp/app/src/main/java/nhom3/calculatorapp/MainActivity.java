@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        //Đặt dấu cho button trừ '-'
         Button btnSub = (Button) findViewById(R.id.btnSub);
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
                 sign = '-';
             }
         });
+
+        //Đặt dấu cho button chia '/'
         Button btnDiv = (Button) findViewById(R.id.btnDiv);
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Đặt dấu cho button cộng '+'
         Button btnAdd =(Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Đặt dấu cho button nhân '*'
         Button btnMul=(Button) findViewById(R.id.btnMul);
         btnMul.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +196,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Xử lý dấu '.' trong số thực
+        Button btnDot=(Button) findViewById(R.id.btnDot);
+        btnDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvrs.setText(tvrs.getText().toString()+".");
+                if(sign==null){
+                    value1 = Double.parseDouble(tvrs.getText().toString());
+                }
+                else {
+                    value2 = Double.parseDouble(tvrs.getText().toString());
+                }
+            }
+        });
+
+
+        //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
         Button btnEq = (Button) findViewById(R.id.btnEqual);
         btnEq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,6 +250,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        //Xử lý xóa (button AC)
         Button btnAC = (Button) findViewById(R.id.btnAC);
         btnAC.setOnClickListener(new View.OnClickListener() {
             @Override
