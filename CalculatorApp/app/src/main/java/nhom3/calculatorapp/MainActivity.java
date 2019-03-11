@@ -341,11 +341,11 @@ public class MainActivity extends AppCompatActivity {
                             rs = num1*num2;
                         }
                         else if (sign=='/'){
-                            divResult = num1/num2;
+                            divResult = (double) num1/ (double) num2;
                         }
                         else {
                             if(sign=='%'){
-                                divResult=num1/100;
+                                divResult= (double)num1/100;
                             }
                         }
 
