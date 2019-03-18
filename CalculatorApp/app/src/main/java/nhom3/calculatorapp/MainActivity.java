@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
 
                         tvResult.setText(rs +"");
                         DecimalFormat df = new DecimalFormat("###.########");
-                        tvResult.setText(df.format(rs));
+                        tvResult.setText(df.format(rs).replace(",","."));
                         //tvResult.setText(rs.toString());
                         value1 = tvResult.getText().toString();
                         sign = null;
@@ -351,16 +351,26 @@ public class MainActivity extends AppCompatActivity {
 
                         if(sign=='/'){
                             tvResult.setText(divResult +"");
+                            DecimalFormat df = new DecimalFormat("###.########");
+                            tvResult.setText(df.format(divResult).replace(",","."));
                             //tvResult.setText(rs.toString());
                             value1 = tvResult.getText().toString();
                             sign = null;
+                            signDot=1;
                         }
                         else{
                             if(sign=='%'){
                                 tvResult.setText(divResult +"");
+                                //định dạng phần số thập  phân chỉ tối đa 8 chữ số
+                                DecimalFormat df = new DecimalFormat("###.########");
+                                //chuyển dấu "," thành dấu "." do định dạng Decimal là dấu ","
+                                tvResult.setText(df.format(divResult).replace(",","."));
                                 //tvResult.setText(rs.toString());
+                                //lưu kết quả vào giá trị thứ nhất để thực hiện tiếp các phép tính sau đó
                                 value1 = tvResult.getText().toString();
+                                //set biến dấu về null để thực hiện phép tính tiếp theo
                                 sign = null;
+                                // set cờ dấu "." về 1 vì đang xử lí số thực
                                 signDot=1;
                             }
                             else {
