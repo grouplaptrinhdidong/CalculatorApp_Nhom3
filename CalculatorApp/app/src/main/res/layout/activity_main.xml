@@ -40,14 +40,14 @@
         android:weightSum="13"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:background="@color/colorNumberBackground"
             android:layout_weight="3"
             android:weightSum="4"
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnNum7"
@@ -84,7 +84,7 @@
             android:weightSum="4"
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnNum8"
@@ -125,7 +125,7 @@
             android:weightSum="4"
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnNum9"
@@ -166,7 +166,7 @@
             android:weightSum="4"
             android:orientation="vertical"
             android:layout_width="65dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnDiv"
@@ -221,7 +221,7 @@
             android:weightSum="4"
             android:orientation="vertical"
             android:layout_width="65dp"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnC"
