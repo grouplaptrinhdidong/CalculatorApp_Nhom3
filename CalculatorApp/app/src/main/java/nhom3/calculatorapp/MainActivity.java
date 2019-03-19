@@ -14,10 +14,14 @@ public class MainActivity extends AppCompatActivity {
     public int signDot = 0;
     // khai báo biến cờ để xác định đã bấm dấu "=" chưa
     public int signEqual = 0;
+
     // khai báo số thứ 1
     public String value1 = "0";
+
     // khai báo số thứ 2
     public String value2 = "0";
+
+
     // khai báo biến lưu phép tính
     public Character sign = null;
 
@@ -185,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     edtResult.setText("");
                     edtResult.setText(edtResult.getText().toString()+ value1 +'-');
                     sign = '-';
+                    value2="";
                 }
                 else {
                     tvResult.setText("");
@@ -204,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
                     edtResult.setText("");
                     edtResult.setText(edtResult.getText().toString()+ value1 +'/');
                     sign = '/';
+                    value2="";
                 }
                 else {
                     tvResult.setText("");
@@ -223,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     edtResult.setText("");
                     edtResult.setText(edtResult.getText().toString()+ value1 +'+');
                     sign = '+';
+                    value2="";
                 }
                 else {
                     tvResult.setText("");
@@ -242,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
                     edtResult.setText("");
                     edtResult.setText(edtResult.getText().toString()+ value1 +'*');
                     sign = '*';
+                    value2="";
                 }
                 else {
                     tvResult.setText("");
@@ -261,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
                     edtResult.setText("");
                     edtResult.setText(edtResult.getText().toString()+ value1 +'%');
                     sign = '%';
+                    value2="";
                 }
                 else {
                     tvResult.setText("");
@@ -423,5 +432,40 @@ public class MainActivity extends AppCompatActivity {
                 tvResult.setText("");
             }
         });
+
+
+        //Xử lý xóa 1 kí tự (button C)
+        Button btnC=(Button) findViewById(R.id.btnC);
+        btnC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(sign==null){
+
+                    edtResult.setText("");
+                    value1=value1.substring(0,value1.length()-1);
+                    edtResult.setText(edtResult.getText().toString()+ value1);
+                    tvResult.setText("");
+
+                    tvResult.setText(value1);
+                }
+                else if(sign!=null && value2.length()==0){
+                    sign=null;
+                    edtResult.setText("");
+                    edtResult.setText(value1);
+                    tvResult.setText("");
+                }
+                else if(sign!=null && value2.length()!=0){
+                    value2=value2.substring(0,value2.length()-1);
+                    edtResult.setText("");
+                    edtResult.setText(edtResult.getText().toString()+ value1 + sign+ value2);
+                    tvResult.setText("");
+                    tvResult.setText(value2);
+                }
+
+            }
+        });
     }
+
+
 }
