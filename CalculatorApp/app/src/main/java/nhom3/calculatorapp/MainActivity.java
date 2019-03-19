@@ -309,19 +309,29 @@ public class MainActivity extends AppCompatActivity {
                             rs = num1*num2;
                         }
                         else if (sign=='/'){
-                            rs = num1/num2;
+                            if(num2 == 0){
+                                rs = num1;
+                            }
+                            else {
+                                rs = num1 / num2;
+                            }
                         }
                         else {
                             if(sign=='%'){
                                 rs=num1/100;
                             }
                         }
-
-                        tvResult.setText(rs +"");
-                        DecimalFormat df = new DecimalFormat("###.########");
-                        tvResult.setText(df.format(rs).replace(",","."));
-                        //tvResult.setText(rs.toString());
-                        value1 = tvResult.getText().toString();
+                        if(num2 == 0 && sign == '/'){
+                            tvResult.setText("Lỗi");
+                            value1 = value1;
+                        }
+                        else{
+                            tvResult.setText(rs +"");
+                            DecimalFormat df = new DecimalFormat("###.########");
+                            tvResult.setText(df.format(rs).replace(",","."));
+                            //tvResult.setText(rs.toString());
+                            value1 = tvResult.getText().toString();
+                        }
                         sign = null;
 
                     }
@@ -341,7 +351,12 @@ public class MainActivity extends AppCompatActivity {
                             rs = num1*num2;
                         }
                         else if (sign=='/'){
-                            divResult = (double) num1/ (double) num2;
+                            if((double)num2 == 0){
+                                rs = num1;
+                            }
+                            else {
+                                divResult = (double) num1 / (double) num2;
+                            }
                         }
                         else {
                             if(sign=='%'){
@@ -350,11 +365,17 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if(sign=='/'){
-                            tvResult.setText(divResult +"");
-                            DecimalFormat df = new DecimalFormat("###.########");
-                            tvResult.setText(df.format(divResult).replace(",","."));
-                            //tvResult.setText(rs.toString());
-                            value1 = tvResult.getText().toString();
+                            if((double)num2 == 0 && sign == '/'){
+                                tvResult.setText("Lỗi");
+                                value1 = value1;
+                            }
+                            else{
+                                tvResult.setText(divResult +"");
+                                DecimalFormat df = new DecimalFormat("###.########");
+                                tvResult.setText(df.format(divResult).replace(",","."));
+                                //tvResult.setText(rs.toString());\\
+                                value1 = tvResult.getText().toString();
+                            }
                             sign = null;
                             signDot=1;
                         }
@@ -402,7 +423,5 @@ public class MainActivity extends AppCompatActivity {
                 tvResult.setText("");
             }
         });
-
-
     }
 }
