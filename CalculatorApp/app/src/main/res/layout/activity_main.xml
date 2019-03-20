@@ -114,6 +114,7 @@
                 android:layout_height="80dp"
                 android:layout_weight="1"
                 android:background="@color/colorNumberBackground"
+                android:onClick="dotCommand"
                 android:text="."
                 android:textColor="@color/colorNumber"
                 android:textSize="30sp" />
@@ -155,6 +156,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorNumberBackground"
                 android:fontFamily="monospace"
+                android:onClick="percentCommand"
                 android:text="%"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp" />
@@ -175,6 +177,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorCommand"
                 android:fontFamily="monospace"
+                android:onClick="divCommand"
                 android:text="/"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp" />
@@ -186,6 +189,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorCommand"
                 android:fontFamily="monospace"
+                android:onClick="mulCommand"
                 android:text="x"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
@@ -197,6 +201,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorCommand"
                 android:fontFamily="monospace"
+                android:onClick="subCommand"
                 android:text="-"
                 android:textColor="#FFFFFF"
                 android:textSize="35sp" />
@@ -208,6 +213,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorCommand"
                 android:fontFamily="monospace"
+                android:onClick="addCommand"
                 android:text="+"
                 android:textColor="#FFFFFF"
                 android:textSize="26sp" />
@@ -228,6 +234,7 @@
                 android:layout_weight="1"
                 android:background="#9395A5"
                 android:fontFamily="monospace"
+                android:onClick="clearCommand"
                 android:text="C"
                 android:textColor="#DD24DA8F"
                 android:textSize="27sp" />
@@ -239,6 +246,7 @@
                 android:layout_weight="1"
                 android:background="#9395A5"
                 android:fontFamily="monospace"
+                android:onClick="allClearCommand"
                 android:text="AC"
                 android:textColor="#DD24DA8F"
                 android:textSize="27sp" />
@@ -249,6 +257,7 @@
                 android:layout_height="160dp"
                 android:layout_weight="2"
                 android:background="#E0018563"
+                android:onClick="equalCommand"
                 android:text="="
                 android:textColor="#FFFFFF"
                 android:textSize="35sp" />

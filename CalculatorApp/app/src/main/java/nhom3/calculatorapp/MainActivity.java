@@ -24,14 +24,18 @@ public class MainActivity extends AppCompatActivity {
 
     // khai báo biến lưu phép tính
     public Character sign = null;
+    TextView tvResult;
+    EditText edtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView tvResult = (TextView) findViewById(R.id.tvResult);
-        final EditText edtResult = (EditText) findViewById(R.id.edtInput);
+        //final TextView tvResult = (TextView) findViewById(R.id.tvResult);
+        //final EditText edtResult = (EditText) findViewById(R.id.edtInput);
+        tvResult = (TextView) findViewById(R.id.tvResult);
+        edtResult = (EditText) findViewById(R.id.edtInput);
 
         //tạo sự kiện click cho các button số từ 0 đến 9
         Button btnNum0 = (Button) findViewById(R.id.btnNum0);
@@ -178,293 +182,278 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-        //Đặt dấu cho button trừ '-'
-        Button btnSub = (Button) findViewById(R.id.btnSub);
-        btnSub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(signEqual!=0){
-                    tvResult.setText("");
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 +'-');
-                    sign = '-';
-                    value2="";
-                }
-                else {
-                    tvResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+"-");
-                    sign = '-';
-                }
-            }
-        });
+    //Xử lý xóa tất cả(button AC)
+    public void allClearCommand(View view){
 
-        //Đặt dấu cho button chia '/'
-        Button btnDiv = (Button) findViewById(R.id.btnDiv);
-        btnDiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(signEqual!=0){
-                    tvResult.setText("");
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 +'/');
-                    sign = '/';
-                    value2="";
-                }
-                else {
-                    tvResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+"/");
-                    sign = '/';
-                }
-            }
-        });
-
-        //Đặt dấu cho button cộng '+'
-        Button btnAdd =(Button) findViewById(R.id.btnAdd);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(signEqual!=0){
-                    tvResult.setText("");
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 +'+');
-                    sign = '+';
-                    value2="";
-                }
-                else {
-                    tvResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+"+");
-                    sign = '+';
-                }
-            }
-        });
-
-        //Đặt dấu cho button nhân '*'
-        Button btnMul=(Button) findViewById(R.id.btnMul);
-        btnMul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(signEqual!=0){
-                    tvResult.setText("");
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 +'*');
-                    sign = '*';
-                    value2="";
-                }
-                else {
-                    tvResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+"*");
-                    sign = '*';
-                }
-            }
-        });
-
-        //Đặt dấu cho button %
-        Button btnPer=(Button) findViewById(R.id.btnPercent);
-        btnPer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(signEqual!=0){
-                    tvResult.setText("");
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 +'%');
-                    sign = '%';
-                    value2="";
-                }
-                else {
-                    tvResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+"%");
-                    sign = '%';
-                }
-            }
-        });
-
-        //Xử lý dấu '.' trong số thực
-        Button btnDot=(Button) findViewById(R.id.btnDot);
-        btnDot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvResult.setText(tvResult.getText().toString()+".");
-                edtResult.setText(edtResult.getText().toString()+".");
-                if(sign==null){
-                    value1 = tvResult.getText().toString();
-                }
-                else {
-                    value2 = tvResult.getText().toString();
-                }
-                signDot=1;
-            }
-        });
+        init();
+        value1 = "";
+        value2 = "";
+        sign = null;
+        edtResult.setText("");
+        tvResult.setText("");
+        signDot=0;
+        signEqual=0;
+    }
 
 
-        //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
-        Button btnEq = (Button) findViewById(R.id.btnEqual);
-        btnEq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    //Đặt TextView tvResult, EditText edtResult trùng với tvResult,edtInput trong activity_main
+    //Đưa vào mỗi hàm dấu làm giá trị đầu vào
+    public void init(){
+        tvResult = (TextView) findViewById(R.id.tvResult);
+        edtResult = (EditText) findViewById(R.id.edtInput);
+    }
 
-                if(sign!=null){
-                    if(signDot!=0){
-                        double num1= Double.parseDouble(value1.toString()+"");
-                        double num2= Double.parseDouble(value2.toString()+"");
-                        double rs = 0;
-                        if(sign=='+'){
-                            rs = num1+num2;
-                        }
-                        else if(sign=='-'){
-                            rs = num1-num2 ;
-                        }
-                        else if (sign=='*'){
-                            rs = num1*num2;
-                        }
-                        else if (sign=='/'){
-                            if(num2 == 0){
-                                rs = num1;
-                            }
-                            else {
-                                rs = num1 / num2;
-                            }
-                        }
-                        else {
-                            if(sign=='%'){
-                                rs=num1/100;
-                            }
-                        }
-                        if(num2 == 0 && sign == '/'){
-                            tvResult.setText("Lỗi");
-                            value1 = value1;
-                        }
-                        else{
-                            tvResult.setText(rs +"");
-                            DecimalFormat df = new DecimalFormat("###.########");
-                            tvResult.setText(df.format(rs).replace(",","."));
-                            //tvResult.setText(rs.toString());
-                            value1 = tvResult.getText().toString();
-                        }
-                        sign = null;
 
+    //Đặt dấu cho button cộng '+'
+    public void addCommand(View view){
+        init();
+        if(signEqual!=0){
+            tvResult.setText("");
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 +'+');
+            sign = '+';
+            value2="";
+        }
+        else {
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+"+");
+            sign = '+';
+        }
+    }
+
+
+    //Đặt dấu cho button trừ '-'
+    public void subCommand(View view){
+        init();
+        if(signEqual!=0){
+            tvResult.setText("");
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 +'-');
+            sign = '-';
+            value2="";
+        }
+        else {
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+"-");
+            sign = '-';
+        }
+    }
+
+
+    //Đặt dấu cho button nhân '*'
+    public void mulCommand(View view){
+        init();
+        if(signEqual!=0){
+            tvResult.setText("");
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 +'*');
+            sign = '*';
+            value2="";
+        }
+        else {
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+"*");
+            sign = '*';
+        }
+    }
+
+
+    //Đặt dấu cho button chia '/'
+    public void divCommand(View view){
+        init();
+        if(signEqual!=0){
+            tvResult.setText("");
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 +'/');
+            sign = '/';
+            value2="";
+        }
+        else {
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+"/");
+            sign = '/';
+        }
+    }
+
+
+    //Đặt dấu cho button %
+    public void percentCommand(View view){
+        init();
+        if(signEqual!=0){
+            tvResult.setText("");
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 +'%');
+            sign = '%';
+            value2="";
+        }
+        else {
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+"%");
+            sign = '%';
+        }
+    }
+
+
+    //Xử lý dấu '.' trong số thực
+    public void dotCommand(View view){
+        init();
+        tvResult.setText(tvResult.getText().toString()+".");
+        edtResult.setText(edtResult.getText().toString()+".");
+        if(sign==null){
+            value1 = tvResult.getText().toString();
+        }
+        else {
+            value2 = tvResult.getText().toString();
+        }
+        signDot=1;
+    }
+
+
+    //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
+    public void equalCommand(View view){
+        init();
+        if(sign!=null){
+            if(signDot!=0){
+                double num1= Double.parseDouble(value1.toString()+"");
+                double num2= Double.parseDouble(value2.toString()+"");
+                double rs = 0;
+                if(sign=='+'){
+                    rs = num1+num2;
+                }
+                else if(sign=='-'){
+                    rs = num1-num2 ;
+                }
+                else if (sign=='*'){
+                    rs = num1*num2;
+                }
+                else if (sign=='/'){
+                    if(num2 == 0){
+                        rs = num1;
                     }
                     else {
-                        int num1= Integer.parseInt(value1.toString()+"");
-                        int num2= Integer.parseInt(value2.toString()+"");
-                        double divResult=0;
-                        int rs = 0;
-
-                        if(sign=='+'){
-                            rs = num1+num2;
-                        }
-                        else if(sign=='-'){
-                            rs = num1-num2 ;
-                        }
-                        else if (sign=='*'){
-                            rs = num1*num2;
-                        }
-                        else if (sign=='/'){
-                            if((double)num2 == 0){
-                                rs = num1;
-                            }
-                            else {
-                                divResult = (double) num1 / (double) num2;
-                            }
-                        }
-                        else {
-                            if(sign=='%'){
-                                divResult= (double)num1/100;
-                            }
-                        }
-
-                        if(sign=='/'){
-                            if((double)num2 == 0 && sign == '/'){
-                                tvResult.setText("Lỗi");
-                                value1 = value1;
-                            }
-                            else{
-                                tvResult.setText(divResult +"");
-                                DecimalFormat df = new DecimalFormat("###.########");
-                                tvResult.setText(df.format(divResult).replace(",","."));
-                                //tvResult.setText(rs.toString());\\
-                                value1 = tvResult.getText().toString();
-                            }
-                            sign = null;
-                            signDot=1;
-                        }
-                        else{
-                            if(sign=='%'){
-                                tvResult.setText(divResult +"");
-                                //định dạng phần số thập  phân chỉ tối đa 8 chữ số
-                                DecimalFormat df = new DecimalFormat("###.########");
-                                //chuyển dấu "," thành dấu "." do định dạng Decimal là dấu ","
-                                tvResult.setText(df.format(divResult).replace(",","."));
-                                //tvResult.setText(rs.toString());
-                                //lưu kết quả vào giá trị thứ nhất để thực hiện tiếp các phép tính sau đó
-                                value1 = tvResult.getText().toString();
-                                //set biến dấu về null để thực hiện phép tính tiếp theo
-                                sign = null;
-                                // set cờ dấu "." về 1 vì đang xử lí số thực
-                                signDot=1;
-                            }
-                            else {
-                                tvResult.setText(rs +"");
-                                //tvResult.setText(rs.toString());
-                                value1 = tvResult.getText().toString();
-                                sign = null;
-                            }
-                        }
-
-
-
+                        rs = num1 / num2;
                     }
-                    signEqual = 1;
                 }
-
-            }
-        });
-
-        //Xử lý xóa (button AC)
-        Button btnAC = (Button) findViewById(R.id.btnAC);
-        btnAC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                value1 = "";
-                value2 = "";
+                else {
+                    if(sign=='%'){
+                        rs=num1/100;
+                    }
+                }
+                if(num2 == 0 && sign == '/'){
+                    tvResult.setText("Lỗi");
+                    value1 = value1;
+                }
+                else{
+                    tvResult.setText(rs +"");
+                    DecimalFormat df = new DecimalFormat("###.########");
+                    tvResult.setText(df.format(rs).replace(",","."));
+                    //tvResult.setText(rs.toString());
+                    value1 = tvResult.getText().toString();
+                }
                 sign = null;
-                edtResult.setText("");
-                tvResult.setText("");
-            }
-        });
-
-
-        //Xử lý xóa 1 kí tự (button C)
-        Button btnC=(Button) findViewById(R.id.btnC);
-        btnC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(sign==null){
-
-                    edtResult.setText("");
-                    value1=value1.substring(0,value1.length()-1);
-                    edtResult.setText(edtResult.getText().toString()+ value1);
-                    tvResult.setText("");
-
-                    tvResult.setText(value1);
-                }
-                else if(sign!=null && value2.length()==0){
-                    sign=null;
-                    edtResult.setText("");
-                    edtResult.setText(value1);
-                    tvResult.setText("");
-                }
-                else if(sign!=null && value2.length()!=0){
-                    value2=value2.substring(0,value2.length()-1);
-                    edtResult.setText("");
-                    edtResult.setText(edtResult.getText().toString()+ value1 + sign+ value2);
-                    tvResult.setText("");
-                    tvResult.setText(value2);
-                }
 
             }
-        });
+            else {
+                int num1= Integer.parseInt(value1.toString()+"");
+                int num2= Integer.parseInt(value2.toString()+"");
+                double divResult=0;
+                int rs = 0;
+
+                if(sign=='+'){
+                    rs = num1+num2;
+                }
+                else if(sign=='-'){
+                    rs = num1-num2 ;
+                }
+                else if (sign=='*'){
+                    rs = num1*num2;
+                }
+                else if (sign=='/'){
+                    if((double)num2 == 0){
+                        rs = num1;
+                    }
+                    else {
+                        divResult = (double) num1 / (double) num2;
+                    }
+                }
+                else {
+                    if(sign=='%'){
+                        divResult= (double)num1/100;
+                    }
+                }
+
+                if(sign=='/'){
+                    if((double)num2 == 0 && sign == '/'){
+                        tvResult.setText("Lỗi");
+                        value1 = value1;
+                    }
+                    else{
+                        tvResult.setText(divResult +"");
+                        DecimalFormat df = new DecimalFormat("###.########");
+                        tvResult.setText(df.format(divResult).replace(",","."));
+                        //tvResult.setText(rs.toString());\\
+                        value1 = tvResult.getText().toString();
+                    }
+                    sign = null;
+                    signDot=1;
+                }
+                else{
+                    if(sign=='%'){
+                        tvResult.setText(divResult +"");
+                        //định dạng phần số thập  phân chỉ tối đa 8 chữ số
+                        DecimalFormat df = new DecimalFormat("###.########");
+                        //chuyển dấu "," thành dấu "." do định dạng Decimal là dấu ","
+                        tvResult.setText(df.format(divResult).replace(",","."));
+                        //tvResult.setText(rs.toString());
+                        //lưu kết quả vào giá trị thứ nhất để thực hiện tiếp các phép tính sau đó
+                        value1 = tvResult.getText().toString();
+                        //set biến dấu về null để thực hiện phép tính tiếp theo
+                        sign = null;
+                        // set cờ dấu "." về 1 vì đang xử lí số thực
+                        signDot=1;
+                    }
+                    else {
+                        tvResult.setText(rs +"");
+                        //tvResult.setText(rs.toString());
+                        value1 = tvResult.getText().toString();
+                        sign = null;
+                    }
+                }
+
+
+
+            }
+            signEqual = 1;
+        }
+    }
+
+    //Xử lý xóa 1 kí tự (button C)
+    public void clearCommand(View view){
+        init();
+        if(sign==null){
+
+            edtResult.setText("");
+            value1=value1.substring(0,value1.length()-1);
+            edtResult.setText(edtResult.getText().toString()+ value1);
+            tvResult.setText("");
+
+            tvResult.setText(value1);
+        }
+        else if(sign!=null && value2.length()==0){
+            sign=null;
+            edtResult.setText("");
+            edtResult.setText(value1);
+            tvResult.setText("");
+        }
+        else if(sign!=null && value2.length()!=0){
+            value2=value2.substring(0,value2.length()-1);
+            edtResult.setText("");
+            edtResult.setText(edtResult.getText().toString()+ value1 + sign+ value2);
+            tvResult.setText("");
+            tvResult.setText(value2);
+        }
     }
 
 
