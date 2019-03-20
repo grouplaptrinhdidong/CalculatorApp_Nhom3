@@ -317,7 +317,13 @@ public class MainActivity extends AppCompatActivity {
         if(sign!=null){
             if(signDot!=0){
                 double num1= Double.parseDouble(value1.toString()+"");
-                double num2= Double.parseDouble(value2.toString()+"");
+                double num2;
+                if(value2.length()==0){
+                    num2=100;
+                }
+                else {
+                    num2= Double.parseDouble(value2.toString()+"");
+                }
                 double rs = 0;
                 if(sign=='+'){
                     rs = num1+num2;
@@ -338,7 +344,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     if(sign=='%'){
-                        rs=num1/100;
+                        value2="100";
+                        double num2New=Double.parseDouble(value2.toString()+"");
+                        rs=num1/num2New;
                     }
                 }
                 if(num2 == 0 && sign == '/'){
@@ -347,7 +355,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else{
                     tvResult.setText(rs +"");
+                    //định dạng phần số thập  phân chỉ tối đa 8 chữ số
                     DecimalFormat df = new DecimalFormat("###.########");
+                    //chuyển dấu "," thành dấu "." do định dạng Decimal là dấu ","
                     tvResult.setText(df.format(rs).replace(",","."));
                     //tvResult.setText(rs.toString());
                     value1 = tvResult.getText().toString();
@@ -357,7 +367,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 int num1= Integer.parseInt(value1.toString()+"");
-                int num2= Integer.parseInt(value2.toString()+"");
+                int num2;
+                if(value2.length()==0){
+                    num2=100;
+                }
+                else {
+                    num2= Integer.parseInt(value2.toString()+"");
+                }
+
                 double divResult=0;
                 int rs = 0;
 
@@ -380,7 +397,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     if(sign=='%'){
-                        divResult= (double)num1/100;
+                        num2=100;
+                        divResult= (double)num1/(double)num2;
                     }
                 }
 
@@ -391,12 +409,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else{
                         tvResult.setText(divResult +"");
+                        //định dạng phần số thập  phân chỉ tối đa 8 chữ số
                         DecimalFormat df = new DecimalFormat("###.########");
+                        //chuyển dấu "," thành dấu "." do định dạng Decimal là dấu ","
                         tvResult.setText(df.format(divResult).replace(",","."));
                         //tvResult.setText(rs.toString());\\
                         value1 = tvResult.getText().toString();
                     }
+
+                    //set biến dấu về null để thực hiện phép tính tiếp theo
                     sign = null;
+                    // set cờ dấu "." về 1 vì đang xử lí số thực
                     signDot=1;
                 }
                 else{
