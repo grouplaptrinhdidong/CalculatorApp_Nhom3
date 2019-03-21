@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     // khai báo số thứ 2
     public String value2 = "0";
 
-
     // khai báo biến lưu phép tính
     public Character sign = null;
     TextView tvResult;
@@ -197,14 +196,12 @@ public class MainActivity extends AppCompatActivity {
         signEqual=0;
     }
 
-
     //Đặt TextView tvResult, EditText edtResult trùng với tvResult,edtInput trong activity_main
     //Đưa vào mỗi hàm dấu làm giá trị đầu vào
     public void init(){
         tvResult = (TextView) findViewById(R.id.tvResult);
         edtResult = (EditText) findViewById(R.id.edtInput);
     }
-
 
     //Đặt dấu cho button cộng '+'
     public void addCommand(View view){
@@ -223,7 +220,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //Đặt dấu cho button trừ '-'
     public void subCommand(View view){
         init();
@@ -240,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
             sign = '-';
         }
     }
-
 
     //Đặt dấu cho button nhân '*'
     public void mulCommand(View view){
@@ -259,7 +254,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //Đặt dấu cho button chia '/'
     public void divCommand(View view){
         init();
@@ -276,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
             sign = '/';
         }
     }
-
 
     //Đặt dấu cho button %
     public void percentCommand(View view){
@@ -295,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //Xử lý dấu '.' trong số thực
     public void dotCommand(View view){
         init();
@@ -309,7 +301,6 @@ public class MainActivity extends AppCompatActivity {
         }
         signDot=1;
     }
-
 
     //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
     public void equalCommand(View view){
@@ -350,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if(num2 == 0 && sign == '/'){
-                    tvResult.setText("Lỗi");
+                    tvResult.setText("Sao ngu quá vậy ahihi");
                     value1 = value1;
                 }
                 else{
@@ -444,9 +435,6 @@ public class MainActivity extends AppCompatActivity {
                         sign = null;
                     }
                 }
-
-
-
             }
             signEqual = 1;
         }
@@ -455,7 +443,11 @@ public class MainActivity extends AppCompatActivity {
     //Xử lý xóa 1 kí tự (button C)
     public void clearCommand(View view){
         init();
-        if(sign==null){
+        if(sign==null && value1.length()==0){
+            edtResult.setText("");
+            tvResult.setText("");
+        }
+        else if(sign==null && value1.length()!=0){
 
             edtResult.setText("");
             value1=value1.substring(0,value1.length()-1);
