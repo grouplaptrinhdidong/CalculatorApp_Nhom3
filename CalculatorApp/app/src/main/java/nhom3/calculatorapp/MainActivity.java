@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //final TextView tvResult = (TextView) findViewById(R.id.tvResult);
         //final EditText edtResult = (EditText) findViewById(R.id.edtInput);
         tvResult = (TextView) findViewById(R.id.tvResult);
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     //value2 = Double.parseDouble(tvResult.getText() + "");
                     value2 = tvResult.getText().toString();
                 }
+                edtResult.setSelection(edtResult.getText().length());
             }
         });
         Button btnNum1 = (Button) findViewById(R.id.btnNum1);
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     //value2 = Double.parseDouble(tvResult.getText() + "");
                     value2 = tvResult.getText().toString();
                 }
+                edtResult.setSelection(edtResult.getText().length());
+
             }
         });
         Button btnNum2 = (Button) findViewById(R.id.btnNum2);
@@ -80,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 = tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
+
             }
         });
         Button btnNum3 = (Button) findViewById(R.id.btnNum3);
@@ -94,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 = tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
+
             }
         });
         Button btnNum4 = (Button) findViewById(R.id.btnNum4);
@@ -122,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 = tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
+
             }
         });
         Button btnNum6 = (Button) findViewById(R.id.btnNum6);
@@ -136,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 = tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
             }
         });
         Button btnNum7 = (Button) findViewById(R.id.btnNum7);
@@ -150,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 =tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
             }
         });
         Button btnNum8 = (Button) findViewById(R.id.btnNum8);
@@ -164,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 =tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
             }
         });
         Button btnNum9 = (Button) findViewById(R.id.btnNum9);
@@ -178,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     value2 =tvResult.getText() + "";
                 }
+                edtResult.setSelection(edtResult.getText().length());
             }
         });
 
@@ -194,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
         tvResult.setText("");
         signDot=0;
         signEqual=0;
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt TextView tvResult, EditText edtResult trùng với tvResult,edtInput trong activity_main
@@ -201,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
     public void init(){
         tvResult = (TextView) findViewById(R.id.tvResult);
         edtResult = (EditText) findViewById(R.id.edtInput);
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt dấu cho button cộng '+'
@@ -218,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
             edtResult.setText(edtResult.getText().toString()+"+");
             sign = '+';
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt dấu cho button trừ '-'
@@ -235,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
             edtResult.setText(edtResult.getText().toString()+"-");
             sign = '-';
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt dấu cho button nhân '*'
@@ -252,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
             edtResult.setText(edtResult.getText().toString()+"*");
             sign = '*';
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt dấu cho button chia '/'
@@ -269,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
             edtResult.setText(edtResult.getText().toString()+"/");
             sign = '/';
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Đặt dấu cho button %
@@ -286,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
             edtResult.setText(edtResult.getText().toString()+"%");
             sign = '%';
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Xử lý dấu '.' trong số thực
@@ -300,6 +321,7 @@ public class MainActivity extends AppCompatActivity {
             value2 = tvResult.getText().toString();
         }
         signDot=1;
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
@@ -341,7 +363,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if(num2 == 0 && sign == '/'){
-                    tvResult.setText("Sao ngu quá vậy ahihi");
+                    tvResult.setText("Error");
                     value1 = value1;
                 }
                 else{
@@ -438,6 +460,7 @@ public class MainActivity extends AppCompatActivity {
             }
             signEqual = 1;
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
     //Xử lý xóa 1 kí tự (button C)
@@ -469,6 +492,7 @@ public class MainActivity extends AppCompatActivity {
             tvResult.setText("");
             tvResult.setText(value2);
         }
+        edtResult.setSelection(edtResult.getText().length());
     }
 
 
