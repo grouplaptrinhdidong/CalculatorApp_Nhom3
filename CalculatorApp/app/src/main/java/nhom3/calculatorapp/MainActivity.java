@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     // khai báo biến lưu phép tính
     public Character sign = null;
+    //khai báo biến đếm số button dấu được bấm trong mỗi phép tính
+    public int countSign = 0;
     TextView tvResult;
     EditText edtResult;
 
@@ -209,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
         signDot=0;
         signEqual=0;
         edtResult.setSelection(edtResult.getText().length());
+        countSign = 0;
     }
 
     //Đặt TextView tvResult, EditText edtResult trùng với tvResult,edtInput trong activity_main
@@ -222,17 +225,26 @@ public class MainActivity extends AppCompatActivity {
     //Đặt dấu cho button cộng '+'
     public void addCommand(View view){
         init();
-        if(signEqual!=0){
+        if(signEqual!=0 && countSign == 0){
             tvResult.setText("");
             edtResult.setText("");
             edtResult.setText(edtResult.getText().toString()+ value1 +'+');
             sign = '+';
             value2="";
+            countSign = countSign + 1;
+        }
+        else if(signEqual != 0 && countSign != 0){
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString() +'+');
+            sign = '+';
+            value2="";
+            countSign = countSign + 1;
         }
         else {
             tvResult.setText("");
             edtResult.setText(edtResult.getText().toString()+"+");
             sign = '+';
+            countSign = countSign + 1;
         }
         edtResult.setSelection(edtResult.getText().length());
     }
@@ -240,17 +252,26 @@ public class MainActivity extends AppCompatActivity {
     //Đặt dấu cho button trừ '-'
     public void subCommand(View view){
         init();
-        if(signEqual!=0){
+        if(signEqual!=0 && countSign == 0){
             tvResult.setText("");
             edtResult.setText("");
             edtResult.setText(edtResult.getText().toString()+ value1 +'-');
             sign = '-';
             value2="";
+            countSign = countSign + 1;
+        }
+        else if(signEqual != 0 && countSign != 0){
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString() +'-');
+            sign = '-';
+            value2="";
+            countSign = countSign + 1;
         }
         else {
             tvResult.setText("");
             edtResult.setText(edtResult.getText().toString()+"-");
             sign = '-';
+            countSign = countSign + 1;
         }
         edtResult.setSelection(edtResult.getText().length());
     }
@@ -258,17 +279,26 @@ public class MainActivity extends AppCompatActivity {
     //Đặt dấu cho button nhân '*'
     public void mulCommand(View view){
         init();
-        if(signEqual!=0){
+        if(signEqual!=0 && countSign == 0){
             tvResult.setText("");
             edtResult.setText("");
             edtResult.setText(edtResult.getText().toString()+ value1 +'*');
             sign = '*';
             value2="";
+            countSign = countSign + 1;
+        }
+        else if(signEqual != 0 && countSign != 0){
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString() +'*');
+            sign = '*';
+            value2="";
+            countSign = countSign + 1;
         }
         else {
             tvResult.setText("");
             edtResult.setText(edtResult.getText().toString()+"*");
             sign = '*';
+            countSign = countSign + 1;
         }
         edtResult.setSelection(edtResult.getText().length());
     }
@@ -276,17 +306,26 @@ public class MainActivity extends AppCompatActivity {
     //Đặt dấu cho button chia '/'
     public void divCommand(View view){
         init();
-        if(signEqual!=0){
+        if(signEqual!=0 && countSign == 0){
             tvResult.setText("");
             edtResult.setText("");
             edtResult.setText(edtResult.getText().toString()+ value1 +'/');
             sign = '/';
             value2="";
+            countSign = countSign + 1;
+        }
+        else if(signEqual != 0 && countSign != 0){
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString() +'/');
+            sign = '/';
+            value2="";
+            countSign = countSign + 1;
         }
         else {
             tvResult.setText("");
             edtResult.setText(edtResult.getText().toString()+"/");
             sign = '/';
+            countSign = countSign + 1;
         }
         edtResult.setSelection(edtResult.getText().length());
     }
@@ -294,17 +333,26 @@ public class MainActivity extends AppCompatActivity {
     //Đặt dấu cho button %
     public void percentCommand(View view){
         init();
-        if(signEqual!=0){
+        if(signEqual!=0 && countSign == 0){
             tvResult.setText("");
             edtResult.setText("");
             edtResult.setText(edtResult.getText().toString()+ value1 +'%');
             sign = '%';
             value2="";
+            countSign = countSign + 1;
+        }
+        else if(signEqual != 0 && countSign != 0){
+            tvResult.setText("");
+            edtResult.setText(edtResult.getText().toString() +'%');
+            sign = '%';
+            value2="";
+            countSign = countSign + 1;
         }
         else {
             tvResult.setText("");
             edtResult.setText(edtResult.getText().toString()+"%");
             sign = '%';
+            countSign = countSign + 1;
         }
         edtResult.setSelection(edtResult.getText().length());
     }
@@ -327,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
     //Xử lý phép toán cộng, trừ, nhân, chia trong click button bằng '='
     public void equalCommand(View view){
         init();
-        if(sign!=null){
+        if(sign!=null && countSign == 1){
             if(signDot!=0){
                 double num1= Double.parseDouble(value1.toString()+"");
                 double num2;
@@ -460,7 +508,12 @@ public class MainActivity extends AppCompatActivity {
             }
             signEqual = 1;
         }
+        else if(countSign != 1){
+            tvResult.setText("");
+            tvResult.setText("Error Format");
+        }
         edtResult.setSelection(edtResult.getText().length());
+        countSign = 0;
     }
 
     //Xử lý xóa 1 kí tự (button C)
